@@ -14,10 +14,18 @@ public class TrashPickup : MonoBehaviour
             foreach (var trash in nearbyTrash)
             {
                 Debug.Log("줍은 쓰레기: " + trash.name);
+                PlayerStealth ps = gameObject.GetComponent<PlayerStealth>();
+                ps.isPickingTrash = true;
                 Destroy(trash.gameObject); // 나중엔 인벤토리에 추가
                 break;
             }
         }
+        if(Input.GetKeyUp(KeyCode.F))
+        {
+            PlayerStealth ps = gameObject.GetComponent<PlayerStealth>();
+            ps.isPickingTrash = false;
+        }
+
     }
 
     void OnDrawGizmosSelected()
