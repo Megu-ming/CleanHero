@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 1.0f;
+    public float moveSpeed = 0.5f;
     private Rigidbody2D rb;
     Vector2 moveDir = Vector2.zero;
 
@@ -16,12 +16,10 @@ public class PlayerController : MonoBehaviour
         set { moveDir = value.normalized; }
     }
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
 
     void Update()
     {

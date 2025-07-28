@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trashName: cigar
+  scoreValue: 20
 --- !u!58 &8090068826660257328
 CircleCollider2D:
   m_ObjectHideFlags: 0

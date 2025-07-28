@@ -1,16 +1,32 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MainScene : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static MainScene Instance;
+
+    public int currentScore = 0;
+    public int maxScore = 100;
+
+    private void Awake()
     {
-        
+        Instance = this;
+        Functions.OnTrashCollected += HandleTrashCollected;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
+        Functions.OnTrashCollected -= HandleTrashCollected;
+    }
+
+    private void HandleTrashCollected(int value)
+    {
+
+        currentScore += value;
+        currentScore = Mathf.Min(currentScore, maxScore);
+        Debug.Log($"현재 점수 : {currentScore}");
         
+        
+        //UIManager.Instance.UpdateProgressBar((float)currentScore / maxScore);
     }
 }
