@@ -6,11 +6,9 @@ public class TrashPickup : MonoBehaviour
 {
     public float pickupRange = 1.5f;
     public LayerMask trashLayer;
-    private PlayerStealth ps;
 
     private void Start()
     {
-        ps = gameObject.GetComponent<PlayerStealth>();
     }
 
     void Update()
@@ -23,13 +21,7 @@ public class TrashPickup : MonoBehaviour
             Debug.Log("줍은 쓰레기: " + ti.name);
             ti.Collected();
             
-            PlayerStealth ps = gameObject.GetComponent<PlayerStealth>();
-            ps.isPickingTrash = true;
-
-        }
-        if(Input.GetKeyUp(KeyCode.F))
-        {
-            ps.isPickingTrash = false;
+            
         }
 
     }
