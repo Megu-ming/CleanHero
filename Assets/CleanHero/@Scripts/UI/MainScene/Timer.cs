@@ -9,8 +9,8 @@ public class GameTimer : MonoBehaviour
     private float currentTime;
     private bool isRunning = false;
 
-    
-    
+    public static Action<int, int> OnTimeChanged; // 분, 초 전달
+    public static Action OnTimeOver;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class GameTimer : MonoBehaviour
         isRunning = true;
     }
 
-    void Update()
+    public void UpdateTimer()
     {
         if (!isRunning) return;
 
@@ -32,12 +32,12 @@ public class GameTimer : MonoBehaviour
 
         int minutes = Mathf.FloorToInt(currentTime / 60f);
         int seconds = Mathf.FloorToInt(currentTime % 60f);
-        Functions.OnTimeChanged?.Invoke(minutes, seconds);
+        GameTimer.OnTimeChanged?.Invoke(minutes, seconds);
 
         if (currentTime <= 0f)
         {
             isRunning = false;
-            Functions.OnTimeOver?.Invoke();
+            GameTimer.OnTimeOver?.Invoke();
         }
     }
 }

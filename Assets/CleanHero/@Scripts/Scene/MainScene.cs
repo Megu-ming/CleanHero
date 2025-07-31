@@ -24,7 +24,7 @@ public class MainScene : MonoBehaviour
         currentScore += value;
         currentScore = Mathf.Min(currentScore, maxScore);
         Debug.Log($"현재 점수 : {currentScore}");
-        
-        UIManager.Instance.UpdateProgressBar((float)currentScore / maxScore);
+
+        UI_MainScene.Instance.SetCleanProgressRatio((float)currentScore / maxScore);
     }
 }
